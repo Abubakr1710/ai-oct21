@@ -16,13 +16,11 @@ def load_data(pth, batch_size):
 
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.1, random_state = 0)
 
-    device =  torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    x_train = torch.tensor(x_train.astype(np.float32))
+    x_test = torch.tensor(x_test.astype(np.float32))
 
-    x_train = torch.tensor(x_train.astype(np.float32)).to(device)
-    x_test = torch.tensor(x_test.astype(np.float32)).to(device)
-
-    y_train = torch.tensor(y_train.astype(np.float32)).to(device)
-    y_test = torch.tensor(y_test.astype(np.float32)).to(device)
+    y_train = torch.tensor(y_train.astype(np.float32))
+    y_test = torch.tensor(y_test.astype(np.float32))
 
     return x_train, x_test, y_train, y_test
 
